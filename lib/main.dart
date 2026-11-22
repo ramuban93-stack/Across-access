@@ -68,7 +68,8 @@ class _MainPageState extends State<MainPage> {
   String lessonTitle = '';
   String selectedCategory = 'All';
   Product? selectedProduct;
-
+final ImagePicker imagePicker = ImagePicker();
+File? selectedImage;
   final TextEditingController searchController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
