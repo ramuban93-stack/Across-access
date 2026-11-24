@@ -364,6 +364,7 @@ Future<void> pickImage(ImageSource source) async {
       nameController.clear();
       priceController.clear();
       imageController.clear();
+      selectedImage = null;
       descriptionController.clear();
       countryController.clear();
     });
