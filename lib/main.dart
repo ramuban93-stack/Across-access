@@ -348,7 +348,7 @@ Future<void> pickImage(ImageSource source) async {
       name: name,
       category: sellCategory,
       price: price,
-      image: imageController.text.trim(),
+      image: selectedImage?.path ?? imageController.text.trim(),
       description: descriptionController.text.trim().isEmpty
           ? 'No description provided.'
           : descriptionController.text.trim(),
