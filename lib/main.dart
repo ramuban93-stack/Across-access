@@ -751,22 +751,75 @@ Future<void> pickImage(ImageSource source) async {
           ),
         ),
         const SizedBox(height: 12),
-        TextField(
-          controller: imageController,
-          onChanged: (_) => setState(() {}),
-          decoration: const InputDecoration(
-            labelText: 'Product Image URL',
-            hintText: 'https://example.com/photo.jpg',
-            helperText: 'Paste a direct image URL here',
-            border: OutlineInputBorder(),
+        
+Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const Text(
+      'Product Photo',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    const SizedBox(height: 10),
+
+    Row(
+      children: [
+        Expanded(
+          child: ElevatedButton.icon(
+            onPressed: () => pickImage(ImageSource.gallery),
+            icon: const Icon(Icons.photo_library),
+            label: const Text('Gallery'),
           ),
         ),
-        const SizedBox(height: 12),
-        if (imageController.text.trim().isNotEmpty)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: productImage(imageController.text, height: 200),
+        const SizedBox(width: 10),
+        Expanded(
+          child: ElevatedButton.icon(
+            onPressed: () => pickImage(ImageSource.camera),
+            icon: const Icon(Icons.camera_alt),
+            label: const Text('Camera'),
           ),
+        ),
+      ],
+    ),
+
+    const SizedBox(height: 12),
+
+    if (selectedImage != null)
+      ClipRRect(
+        borderRadius: BorderRadius.circular(14),
+        child: Image.file(
+          selectedImage!,
+          height: 200,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
+      )
+    else
+      Container(
+        height: 160,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.blue.shade50,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: Colors.blue.shade200),
+        ),
+        child: const Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.add_a_photo, size: 45, color: Colors.blue),
+              SizedBox(height: 8),
+              Text('Select or capture product photo'),
+            ],
+          ),
+        ),
+      ),
+  ],
+)
+
+      
         const SizedBox(height: 12),
         TextField(
           controller: descriptionController,
