@@ -79,9 +79,9 @@ File? selectedImage;
 
   String sellCategory = 'Electronics';
   String sellCondition = 'New';
-Future<void> pickProductImage() async {
-final XFile? pickedFile = await imagePicker.pickImage(
-  source: ImageSource.gallery,
+Future<void> pickImage(ImageSource source) async {
+  final XFile? pickedFile = await imagePicker.pickImage(
+    source: source,
     imageQuality: 80,
   );
 
@@ -90,6 +90,7 @@ final XFile? pickedFile = await imagePicker.pickImage(
       selectedImage = File(pickedFile.path);
     });
   }
+}
 }
   final List<Product> products = [
     Product(
