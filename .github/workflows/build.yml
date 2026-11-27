@@ -1,4 +1,3 @@
-
 name: Across Access APK Build
 
 on:
@@ -20,6 +19,9 @@ jobs:
         with:
           channel: stable
 
+      - name: Generate Android project
+        run: flutter create --platforms=android --project-name across_access .
+
       - name: Install dependencies
         run: flutter pub get
 
@@ -31,4 +33,3 @@ jobs:
         with:
           name: Across-Access-APK
           path: build/app/outputs/flutter-apk/app-release.apk
-          
